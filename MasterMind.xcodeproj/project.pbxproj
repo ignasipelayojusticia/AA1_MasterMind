@@ -12,6 +12,8 @@
 		EF1AEBF525F7F54D0016716E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1AEBF425F7F54D0016716E /* Assets.xcassets */; };
 		EF1AEBF825F7F54D0016716E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1AEBF725F7F54D0016716E /* Preview Assets.xcassets */; };
 		EF1AEC0125F7F55D0016716E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AEC0025F7F55D0016716E /* ViewModel.swift */; };
+		EF1AEC0C25F800050016716E /* ColorSphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AEC0B25F800050016716E /* ColorSphere.swift */; };
+		EF1AEC0F25F801760016716E /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AEC0E25F801760016716E /* Row.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		EF1AEBF725F7F54D0016716E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EF1AEBF925F7F54D0016716E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF1AEC0025F7F55D0016716E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EF1AEC0B25F800050016716E /* ColorSphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSphere.swift; sourceTree = "<group>"; };
+		EF1AEC0E25F801760016716E /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			children = (
 				EF1AEBF025F7F54C0016716E /* MasterMindApp.swift */,
 				EF1AEBF225F7F54C0016716E /* ContentView.swift */,
+				EF1AEC0A25F7FFF20016716E /* View */,
 				EF1AEC0025F7F55D0016716E /* ViewModel.swift */,
 				EF1AEC0325F7F5690016716E /* Models */,
 				EF1AEBF425F7F54D0016716E /* Assets.xcassets */,
@@ -78,6 +83,15 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EF1AEC0A25F7FFF20016716E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EF1AEC0B25F800050016716E /* ColorSphere.swift */,
+				EF1AEC0E25F801760016716E /* Row.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +165,8 @@
 			files = (
 				EF1AEBF325F7F54C0016716E /* ContentView.swift in Sources */,
 				EF1AEC0125F7F55D0016716E /* ViewModel.swift in Sources */,
+				EF1AEC0C25F800050016716E /* ColorSphere.swift in Sources */,
+				EF1AEC0F25F801760016716E /* Row.swift in Sources */,
 				EF1AEBF125F7F54C0016716E /* MasterMindApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
