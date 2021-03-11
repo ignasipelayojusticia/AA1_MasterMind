@@ -35,37 +35,20 @@ struct ContentView: View
                     ForEach(viewModel.rows, id: \.number)
                     {
                         row in
-                        RowView(viewModel: viewModel,
-                                firstSphereColor: row.firstSphereColor,
-                                secondSphereColor: row.secondSphereColor,
-                                thirdSphereColor: row.thirdSphereColor,
-                                fourthSphereColor: row.fourthSphereColor)
+                        RowView(viewModel: viewModel, rowNumber: row.number)
                     }
                 }
             }
 
-            Text("Tried 2 times").font(.title2).background(Color.red).padding()
+            Text("Tried \(viewModel.currentRow) times"  ).font(.title2).background(Color.red).padding()
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    var rowList: [row] =
-    [
-        row(number: 1, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 2, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 3, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 4, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 5, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 6, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 7, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 8, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 9, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 10, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 11, colors: [.gray, .gray, .gray, .gray]),
-        row(number: 12, colors: [.gray, .gray, .gray, .gray])
-    ]
-    static var previews: some View {
+struct ContentView_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
         ContentView(viewModel: ViewModel())
     }
 }

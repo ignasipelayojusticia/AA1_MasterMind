@@ -11,30 +11,23 @@ class ViewModel: ObservableObject
 {
     let maximumNumberOfTries: Int = 12
     
-    @Published private var currentRow: Int
-    @Published var firstColor: Color
+    var currentRow: Int = 0
     
     @Published var rows: [Row]
     
-    
     init()
     {
-        self.currentRow = 1
-        self.firstColor = Color.red
-        
-        rows = [Row]()
-        for number in 1...maximumNumberOfTries
+        self.rows = [Row]()
+        for number in 0...(maximumNumberOfTries - 1)
         {
-            rows.append(Row(thisNumber: number))
+            self.rows.append(Row(thisNumber: number))
         }
-        
-        print(rows.count)
     }
 }
 
 class Row
 {
-    let number: Int
+    @Published var number: Int
     
     var firstSphereColor: Color
     var secondSphereColor: Color
