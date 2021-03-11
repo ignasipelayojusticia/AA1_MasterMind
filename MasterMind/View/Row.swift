@@ -9,26 +9,28 @@ import SwiftUI
 
 struct Row: View
 {
-    var number: Int
-    
     var firstSphereColor: Color
-    var secondSphereColor: Color
-    var thirdSphereColor: Color
-    var fourthSphereColor: Color
     
-    var body: some View
-    {
-        HStack
-        {
-            Circle().fill(firstSphereColor).frame(width: 50, height: 50, alignment: .center)
-            
-            Circle().fill(secondSphereColor).frame(width: 50, height: 50, alignment: .center)
-            
-            Circle().fill(thirdSphereColor).frame(width: 50, height: 50, alignment: .center)
-            
-            Circle().fill(fourthSphereColor).frame(width: 50, height: 50, alignment: .center)
-        }
-    }
+    //var number: Int
+    //
+    //var firstSphereColor: Color
+    //var secondSphereColor: Color
+    //var thirdSphereColor: Color
+    //var fourthSphereColor: Color
+    //
+    //var body: some View
+    //{
+    //    HStack
+    //    {
+    //        Circle().fill(firstSphereColor).frame(width: 50, height: 50, alignment: .center)
+    //
+    //        Circle().fill(secondSphereColor).frame(width: 50, height: 50, alignment: .center)
+    //
+    //        Circle().fill(thirdSphereColor).frame(width: 50, height: 50, alignment: .center)
+    //
+    //        Circle().fill(fourthSphereColor).frame(width: 50, height: 50, alignment: .center)
+    //    }
+    //}
 }
 
 /*
