@@ -9,7 +9,7 @@ import SwiftUI
 
 class ViewModel: ObservableObject
 {
-    let maximumNumberOfTries: Int
+    let maximumNumberOfTries: Int = 12
     
     @Published private var currentRow: Int
     @Published var firstColor: Color
@@ -19,8 +19,6 @@ class ViewModel: ObservableObject
     
     init()
     {
-        self.maximumNumberOfTries = 12
-        
         self.currentRow = 1
         self.firstColor = Color.red
         
@@ -28,8 +26,9 @@ class ViewModel: ObservableObject
         for number in 1...maximumNumberOfTries
         {
             rows.append(Row(thisNumber: number))
-            print(number)
         }
+        
+        print(rows.count)
     }
 }
 
