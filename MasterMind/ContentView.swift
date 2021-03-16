@@ -19,7 +19,7 @@ struct ContentView: View
         {
             Text("AA1 Mastermind").font(.title).bold()
             Text("by Ignasi Pelayo").font(.footnote).italic()
-            
+             
             List
             {
                 ForEach(viewModel.rows, id: \.number)
@@ -27,7 +27,16 @@ struct ContentView: View
                     row in
                     RowView(viewModel: viewModel, rowNumber: row.number)
                 }
+            }.onAppear {
+                UITableView.appearance().isScrollEnabled = false
             }
+            
+            Spacer()
+            
+            SolutionView(viewModel: viewModel)
+            
+            
+        
         }
     }
 }

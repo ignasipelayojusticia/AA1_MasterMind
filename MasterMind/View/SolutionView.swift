@@ -11,7 +11,7 @@ struct SolutionView: View
 {
     @ObservedObject var viewModel: ViewModel
     
-    private let size: CGFloat = 50.0
+    private let size: CGFloat = 10.0
     
     var body: some View
     {

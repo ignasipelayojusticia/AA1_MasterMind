@@ -16,6 +16,7 @@ class ViewModel: ObservableObject
     
     var solution: Solution
     @Published var rows: [Row]
+    var userSolution: UserSolution
     
     var validColors: [Color] = [.red, .blue, .yellow, .green]
     
@@ -23,10 +24,17 @@ class ViewModel: ObservableObject
     {
         self.solution = Solution(self.validColors)
         self.rows = [Row]()
+        self.userSolution = UserSolution()
+        
         for number in 0...(maximumNumberOfTries - 1)
         {
             self.rows.append(Row(thisNumber: number))
         }
+    }
+    
+    func ResetUserSolution() -> Void
+    {
+        userSolution.ResetUserSolution()
     }
 }
 
@@ -62,33 +70,6 @@ class Row
         
         self.finished = false
     }
-    
-    func SetColor(newColor: Color)
-    {
-        if(self.firstSphereColor ==  Color.gray)
-        {
-            self.firstSphereColor = newColor
-            return
-        }
-        
-        if(self.secondSphereColor == Color.gray)
-        {
-            self.secondSphereColor = newColor
-            return
-        }
-        
-        if(self.thirdSphereColor == Color.gray)
-        {
-            self.thirdSphereColor = newColor
-            return
-        }
-        
-        if(self.fourthSphereColor == Color.gray)
-        {
-            self.fourthSphereColor = newColor
-            return
-        }
-    }
 }
 
 struct Solution
@@ -106,5 +87,29 @@ struct Solution
         self.secondSphereColor = validColors[Int.random(in: (0...3))]
         self.thirdSphereColor = validColors[Int.random(in: (0...3))]
         self.fourthSphereColor = validColors[Int.random(in: (0...3))]
+    }
+}
+
+class UserSolution
+{
+    var firstSphereColor: Color
+    var secondSphereColor: Color
+    var thirdSphereColor: Color
+    var fourthSphereColor: Color
+    
+    init()
+    {
+        self.firstSphereColor = Color.white
+        self.secondSphereColor = Color.white
+        self.thirdSphereColor = Color.white
+        self.fourthSphereColor = Color.white
+    }
+    
+    func ResetUserSolution() -> Void
+    {
+        self.firstSphereColor = Color.white
+        self.secondSphereColor = Color.white
+        self.thirdSphereColor = Color.white
+        self.fourthSphereColor = Color.white
     }
 }

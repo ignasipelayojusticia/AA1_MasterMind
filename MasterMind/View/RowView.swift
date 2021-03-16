@@ -21,26 +21,33 @@ struct RowView: View
     {
         HStack
         {
-            Text("\(rowNumber + 1)").font(.largeTitle).fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/).frame(width: 50, height: 35, alignment: .leading)
+            Text("\(rowNumber + 1)").font(.title3).frame(width: 25, height: 35, alignment: .leading).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 40))
             
-            Circle().fill(viewModel.rows[rowNumber].firstSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Circle().fill(viewModel.rows[rowNumber].secondSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Circle().fill(viewModel.rows[rowNumber].thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Circle().fill(viewModel.rows[rowNumber].fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            
-            Spacer(minLength: 10)
-            
-            VStack
+            HStack
             {
-                Circle().fill(viewModel.rows[rowNumber].firstAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Circle().fill(viewModel.rows[rowNumber].thirdAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            }
-            VStack
+                Circle().fill(viewModel.rows[rowNumber].firstSphereColor).frame(width: size, height: size, alignment: .leading)
+                Circle().fill(viewModel.rows[rowNumber].secondSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Circle().fill(viewModel.rows[rowNumber].thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Circle().fill(viewModel.rows[rowNumber].fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
+
+            
+            HStack
             {
-                Circle().fill(viewModel.rows[rowNumber].secondAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                VStack
+                {
+                    Circle().fill(viewModel.rows[rowNumber].firstAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Circle().fill(viewModel.rows[rowNumber].thirdAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                }
+                VStack
+                {
+                    Circle().fill(viewModel.rows[rowNumber].secondAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                }
             }
-        }
+        }.frame(minWidth: 100, idealWidth: 300, maxWidth: .infinity,
+                minHeight: 25, idealHeight: 40, maxHeight: 50,
+                alignment: .center)
     }
 }
 
