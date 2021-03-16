@@ -27,7 +27,8 @@ struct ContentView: View
                     row in
                     RowView(viewModel: viewModel, rowNumber: row.number)
                 }
-            }.onAppear {
+            }.onAppear
+            {
                 UITableView.appearance().isScrollEnabled = false
             }
             
@@ -35,8 +36,27 @@ struct ContentView: View
             
             SolutionView(viewModel: viewModel)
             
+            HStack
+            {
+                ActionButtonView(label: "X", action: viewModel.ResetUserSolution, color: Color.red)
+                UserSolutionView(viewModel: viewModel)
+                ActionButtonView(label: ">", action: viewModel.ResetUserSolution, color: Color.green)
+            }
+
+            Spacer()
             
-        
+            HStack
+            {
+                Spacer()
+                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[0])
+                Spacer()
+                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[1])
+                Spacer()
+                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[2])
+                Spacer()
+                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[3])
+                Spacer()
+            }
         }
     }
 }

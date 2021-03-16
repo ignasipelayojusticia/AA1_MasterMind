@@ -36,6 +36,11 @@ class ViewModel: ObservableObject
     {
         userSolution.ResetUserSolution()
     }
+    
+    func AddColor(color: Color) -> Void
+    {
+        print("Add color")
+    }
 }
 
 class Row
