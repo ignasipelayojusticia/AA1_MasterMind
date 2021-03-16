@@ -7,16 +7,21 @@
 
 import SwiftUI
 
+
 class ViewModel: ObservableObject
 {
     let maximumNumberOfTries: Int = 12
     
     var currentRow: Int = 0
     
+    var solution: Solution
     @Published var rows: [Row]
+    
+    var validColors: [Color] = [.red, .blue, .yellow, .green]
     
     init()
     {
+        self.solution = Solution(self.validColors)
         self.rows = [Row]()
         for number in 0...(maximumNumberOfTries - 1)
         {
@@ -83,5 +88,23 @@ class Row
             self.fourthSphereColor = newColor
             return
         }
+    }
+}
+
+struct Solution
+{
+    var firstSphereColor: Color = Color.gray
+    var secondSphereColor: Color = Color.gray
+    var thirdSphereColor: Color = Color.gray
+    var fourthSphereColor: Color = Color.gray
+    
+    var visible: Bool = true
+    
+    init(_ validColors: [Color])
+    {
+        self.firstSphereColor = validColors[Int.random(in: (0...3))]
+        self.secondSphereColor = validColors[Int.random(in: (0...3))]
+        self.thirdSphereColor = validColors[Int.random(in: (0...3))]
+        self.fourthSphereColor = validColors[Int.random(in: (0...3))]
     }
 }

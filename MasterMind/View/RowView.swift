@@ -21,12 +21,14 @@ struct RowView: View
     {
         HStack
         {
+            Text("\(rowNumber + 1)").font(.largeTitle).fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/).frame(width: 50, height: 35, alignment: .leading)
+            
             Circle().fill(viewModel.rows[rowNumber].firstSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             Circle().fill(viewModel.rows[rowNumber].secondSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             Circle().fill(viewModel.rows[rowNumber].thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             Circle().fill(viewModel.rows[rowNumber].fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             
-            Spacer()
+            Spacer(minLength: 10)
             
             VStack
             {
@@ -39,5 +41,13 @@ struct RowView: View
                 Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
         }
+    }
+}
+
+struct RowView_Previews: PreviewProvider
+{
+    static var previews: some View
+    {
+        RowView(viewModel: ViewModel(), rowNumber: 0)
     }
 }
