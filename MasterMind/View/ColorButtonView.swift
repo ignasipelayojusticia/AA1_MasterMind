@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ColorButtonView: View
 {
-    @ObservedObject var viewModel: ViewModel
+    let viewModel: ViewModel
     let color: Color
     
     private let size: CGFloat = 50.0
     
     var body: some View
     {
-        Button("", action: {viewModel.AddColor(color: color)})
+        Button(" ", action: { viewModel.AddColor(color: color)})
             .frame(width: size, height: size, alignment: .center)
             .background(color)
             .foregroundColor(.black)

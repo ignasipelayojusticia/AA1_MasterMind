@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View
 {
-    var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
     
     
     var body: some View
@@ -19,42 +19,45 @@ struct ContentView: View
         {
             Text("AA1 Mastermind").font(.title).bold()
             Text("by Ignasi Pelayo").font(.footnote).italic()
-             
-            List
+            
+            
+            VStack
             {
                 ForEach(viewModel.rows, id: \.number)
                 {
                     row in
                     RowView(viewModel: viewModel, rowNumber: row.number)
                 }
-            }.onAppear
-            {
-                UITableView.appearance().isScrollEnabled = false
             }
             
             Spacer()
             
-            SolutionView(viewModel: viewModel)
+            SolutionView(firstSphereColor: viewModel.solution.firstSphereColor, secondSphereColor: viewModel.solution.secondSphereColor, thirdSphereColor: viewModel.solution.thirdSphereColor, fourthSphereColor: viewModel.solution.fourthSphereColor)
+            
             
             HStack
             {
-                ActionButtonView(label: "X", action: viewModel.ResetUserSolution, color: Color.red)
-                UserSolutionView(viewModel: viewModel)
-                ActionButtonView(label: ">", action: viewModel.ResetUserSolution, color: Color.green)
+                ActionButtonView(label: "X", action: self.viewModel.ResetUserSolution, color: Color.red)
+                
+                UserSolutionView(firstSphereColor: self.viewModel.userSolution.firstSphereColor,
+                                 secondSphereColor: self.viewModel.userSolution.secondSphereColor,
+                                 thirdSphereColor: self.viewModel.userSolution.thirdSphereColor,
+                                 fourthSphereColor: self.viewModel.userSolution.fourthSphereColor)
+                
+                ActionButtonView(label: ">", action: self.viewModel.SendSolution, color: Color.green)
             }
 
-            Spacer()
-            
+
             HStack
             {
                 Spacer()
-                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[0])
+                ColorButtonView(viewModel: viewModel, color: self.viewModel.validColors[0])
                 Spacer()
-                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[1])
+                ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[1])
                 Spacer()
-                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[2])
+                ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[2])
                 Spacer()
-                ColorButtonView(viewModel: viewModel, color: viewModel.validColors[3])
+                ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[3])
                 Spacer()
             }
         }

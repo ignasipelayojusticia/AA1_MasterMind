@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RowView: View
 {
-    @ObservedObject var viewModel: ViewModel
+    let viewModel: ViewModel
     
     var rowNumber: Int
     
@@ -45,9 +45,7 @@ struct RowView: View
                     Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
             }
-        }.frame(minWidth: 100, idealWidth: 300, maxWidth: .infinity,
-                minHeight: 25, idealHeight: 40, maxHeight: 50,
-                alignment: .center)
+        }
     }
 }
 

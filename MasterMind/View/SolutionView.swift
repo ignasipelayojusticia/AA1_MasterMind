@@ -9,21 +9,21 @@ import SwiftUI
 
 struct SolutionView: View
 {
-    @ObservedObject var viewModel: ViewModel
+    var firstSphereColor: Color
+    var secondSphereColor: Color
+    var thirdSphereColor: Color
+    var fourthSphereColor: Color
     
     private let size: CGFloat = 10.0
     
     var body: some View
     {
-        if(viewModel.solution.visible)
+        HStack
         {
-            HStack
-            {
-                Circle().fill(viewModel.solution.firstSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Circle().fill(viewModel.solution.secondSphereColor).frame(width: size, height: size, alignment: .center)
-                Circle().fill(viewModel.solution.thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Circle().fill(viewModel.solution.fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            }
+            Circle().fill(firstSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Circle().fill(secondSphereColor).frame(width: size, height: size, alignment: .center)
+            Circle().fill(thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Circle().fill(fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }
     }
 }
@@ -32,6 +32,6 @@ struct SolutionView_Previews: PreviewProvider
 {
     static var previews: some View
     {
-        SolutionView(viewModel: ViewModel())
+        SolutionView(firstSphereColor: .red, secondSphereColor: .orange, thirdSphereColor: .blue, fourthSphereColor: .black)
     }
 }
