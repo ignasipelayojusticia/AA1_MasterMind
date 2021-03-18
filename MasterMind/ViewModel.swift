@@ -18,22 +18,13 @@ class ViewModel: ObservableObject
     @Published var rows: [Row]
     @Published var userSolution: UserSolution
     
-    var validColors: [Color] = [.red, .blue, .yellow, .green]
-    
-    @Published var testString: String = "Hello"
+    let validColors: [Color] = [.red, .blue, .yellow, .green]
     
     init()
     {
         self.solution = Solution(self.validColors)
         self.rows = [Row]()
         self.userSolution = UserSolution()
-        
-        /*
-        for number in 0...(maximumNumberOfTries - 1)
-        {
-            self.rows.append(Row(thisNumber: number))
-        }
-        */
     }
     
     public func SendSolution()
@@ -47,11 +38,59 @@ class ViewModel: ObservableObject
         self.rows.append(Row(thisNumber: self.currentRow,
                              firstColor: self.userSolution.firstSphereColor, secondColor: self.userSolution.secondSphereColor,
                              thirdColor: self.userSolution.thirdSphereColor, fourthColor: self.userSolution.fourthSphereColor))
+							 
+		//TODO: Check for correct positions
+		CheckSolution()
+		
         self.currentRow = self.currentRow + 1
         
         self.ResetUserSolution()
     }
     
+	private func CheckSolution()
+	{
+		var correctPositions: [Int] = [Int]()
+		var incorrectPositions: [Int] = [Int]()
+	
+		for position in 1...4
+		{
+			if(CheckForSamePosition(position: number)
+			{
+				correctPositions.append(number)
+			}
+			else
+			{
+				incorrectPositions.append(number)
+			}
+		}
+		
+		if(correctPositions.count == 4)
+		{
+			print("You won")
+			return
+		}
+	}
+	
+	private func CheckForSamePosition(position: Int) -> Bool
+	{
+		if(position == 1)
+		{
+			return self.rows[self.currentRow].firstSphereColor == self.userSolution.firstSphereColor
+		}
+		else if(position == 2)
+		{
+			return self.rows[self.currentRow].secondSphereColor == self.userSolution.secondSphereColor
+		}
+		else if(position == 3)
+		{
+			return self.rows[self.currentRow].thirdSphereColor == self.userSolution.thirdSphereColor
+		}
+		else
+		{
+			return self.rows[self.currentRow].fourthSphereColor == self.userSolution.fourthSphereColor
+		}
+	}
+	
     public func ResetUserSolution()
     {
         self.userSolution.firstSphereColor = Color.white

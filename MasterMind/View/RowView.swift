@@ -25,10 +25,10 @@ struct RowView: View
             
             HStack
             {
-                Circle().fill(viewModel.rows[rowNumber].firstSphereColor).frame(width: size, height: size, alignment: .leading)
-                Circle().fill(viewModel.rows[rowNumber].secondSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Circle().fill(viewModel.rows[rowNumber].thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                Circle().fill(viewModel.rows[rowNumber].fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                Circle().fill(viewModel.rows[rowNumber].firstSphereColor).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].secondSphereColor).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].thirdSphereColor).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].fourthSphereColor).frame(width: size, height: size, alignment: .center)
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
 
             
@@ -36,16 +36,18 @@ struct RowView: View
             {
                 VStack
                 {
-                    Circle().fill(viewModel.rows[rowNumber].firstAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    Circle().fill(viewModel.rows[rowNumber].thirdAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Circle().fill(viewModel.rows[rowNumber].firstAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
+                    Circle().fill(viewModel.rows[rowNumber].thirdAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
                 }
                 VStack
                 {
-                    Circle().fill(viewModel.rows[rowNumber].secondAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Circle().fill(viewModel.rows[rowNumber].secondAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
+                    Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
                 }
             }
-        }
+        }.frame(minWidth: 100, idealWidth: 300, maxWidth: .infinity,
+                minHeight: 25, idealHeight: 40, maxHeight: 50,
+                alignment: .center)
     }
 }
 

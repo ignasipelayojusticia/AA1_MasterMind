@@ -32,17 +32,14 @@ struct ContentView: View
             
             Spacer()
             
-            SolutionView(firstSphereColor: viewModel.solution.firstSphereColor, secondSphereColor: viewModel.solution.secondSphereColor, thirdSphereColor: viewModel.solution.thirdSphereColor, fourthSphereColor: viewModel.solution.fourthSphereColor)
+            SolutionView(viewModel: viewModel)
             
             
             HStack
             {
                 ActionButtonView(label: "X", action: self.viewModel.ResetUserSolution, color: Color.red)
                 
-                UserSolutionView(firstSphereColor: self.viewModel.userSolution.firstSphereColor,
-                                 secondSphereColor: self.viewModel.userSolution.secondSphereColor,
-                                 thirdSphereColor: self.viewModel.userSolution.thirdSphereColor,
-                                 fourthSphereColor: self.viewModel.userSolution.fourthSphereColor)
+                UserSolutionView(viewModel: viewModel)
                 
                 ActionButtonView(label: ">", action: self.viewModel.SendSolution, color: Color.green)
             }

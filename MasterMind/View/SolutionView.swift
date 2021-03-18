@@ -9,10 +9,7 @@ import SwiftUI
 
 struct SolutionView: View
 {
-    var firstSphereColor: Color
-    var secondSphereColor: Color
-    var thirdSphereColor: Color
-    var fourthSphereColor: Color
+	let viewModel: ViewModel
     
     private let size: CGFloat = 10.0
     
@@ -20,10 +17,10 @@ struct SolutionView: View
     {
         HStack
         {
-            Circle().fill(firstSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Circle().fill(secondSphereColor).frame(width: size, height: size, alignment: .center)
-            Circle().fill(thirdSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Circle().fill(fourthSphereColor).frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Circle().fill(viewModel.solution.firstSphereColor).frame(width: size, height: size, alignment: .center)
+            Circle().fill(viewModel.solution.secondSphereColor).frame(width: size, height: size, alignment: .center)
+            Circle().fill(viewModel.solution.thirdSphereColor).frame(width: size, height: size, alignment: .center)
+            Circle().fill(viewModel.solution.fourthSphereColor).frame(width: size, height: size, alignment: .center)
         }
     }
 }
@@ -32,6 +29,6 @@ struct SolutionView_Previews: PreviewProvider
 {
     static var previews: some View
     {
-        SolutionView(firstSphereColor: .red, secondSphereColor: .orange, thirdSphereColor: .blue, fourthSphereColor: .black)
+        SolutionView(viewModel: ViewModel())
     }
 }
