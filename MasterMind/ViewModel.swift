@@ -49,7 +49,7 @@ class ViewModel: ObservableObject
 							 
         self.CheckSolution()
 		
-        self.currentRow = self.currentRow + 1
+        self.currentRow += 1
         
         self.ResetUserSolution()
     }
@@ -59,7 +59,7 @@ class ViewModel: ObservableObject
 		var correctPositions: [Int] = [Int]()
 		var incorrectPositions: [Int] = [Int]()
 	
-		for position in 1...4
+		for position in 0...3
 		{
 			if(CheckForSamePosition(position: position))
 			{
@@ -70,38 +70,49 @@ class ViewModel: ObservableObject
 				incorrectPositions.append(position)
 			}
 		}
-		
-        print(correctPositions.count)
         
 		if(correctPositions.count == 4)
 		{
 			print("You won")
+            self.rows[currentRow].answerColors = Solution(correctSolutions: correctPositions.count, incorrectSolutions: 0)
 			return
 		}
+        
+        var diferentPositions: Int = 0
+        
+        print(incorrectPositions.count)
+        
+        for position in 0...(incorrectPositions.count - 1)
+        {
+            if(CheckForDifferentPosition(position: position, incorrectPositions: incorrectPositions))
+            {
+                diferentPositions += 1
+            }
+        }
+        
+        self.rows[currentRow].answerColors = Solution(correctSolutions: correctPositions.count, incorrectSolutions: diferentPositions)
 	}
 	
 	private func CheckForSamePosition(position: Int) -> Bool
 	{
-        return false
-        /*
-		if(position == 1)
-		{
-			return self.rows[self.currentRow].firstSphereColor == self.userSolution.firstSphereColor
-		}
-		else if(position == 2)
-		{
-			return self.rows[self.currentRow].secondSphereColor == self.userSolution.secondSphereColor
-		}
-		else if(position == 3)
-		{
-			return self.rows[self.currentRow].thirdSphereColor == self.userSolution.thirdSphereColor
-		}
-		else
-		{
-			return self.rows[self.currentRow].fourthSphereColor == self.userSolution.fourthSphereColor
-		}
-        */
+        return self.rows[self.currentRow].solution.sphereColors[position] == self.solution.sphereColors[position]
 	}
+    
+    private func CheckForDifferentPosition(position: Int, incorrectPositions: [Int]) -> Bool
+    {
+        var foundOnDiferentPosition: Bool = false
+        
+        for pos in 0...(incorrectPositions.count - 1)
+        {
+            if(pos != position && self.rows[self.currentRow].solution.sphereColors[position] == self.solution.sphereColors[pos])
+            {
+                foundOnDiferentPosition = true
+                break
+            }
+        }
+        
+        return foundOnDiferentPosition
+    }
 	
     public func ResetUserSolution()
     {
@@ -170,5 +181,24 @@ struct Solution
     init(_ defaultColor: Color)
     {
         self.sphereColors = [defaultColor, defaultColor, defaultColor, defaultColor]
+    }
+    
+    init(correctSolutions: Int, incorrectSolutions: Int)
+    {
+        if(correctSolutions > 0)
+        {
+            for number in 0...(correctSolutions - 1)
+            {
+                self.sphereColors[number] = Color.red
+            }
+        }
+        
+        if(incorrectSolutions > 0)
+        {
+            for number in 0...(incorrectSolutions - 1)
+            {
+                self.sphereColors[correctSolutions + number] = Color.yellow
+            }
+        }
     }
 }
