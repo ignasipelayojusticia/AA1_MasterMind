@@ -47,8 +47,7 @@ class ViewModel: ObservableObject
 
         self.rows.append(Row(thisNumber: self.currentRow, solution: self.userSolution))
 							 
-		//TODO: Check for correct positions
-		CheckSolution()
+        self.CheckSolution()
 		
         self.currentRow = self.currentRow + 1
         
@@ -72,6 +71,8 @@ class ViewModel: ObservableObject
 			}
 		}
 		
+        print(correctPositions.count)
+        
 		if(correctPositions.count == 4)
 		{
 			print("You won")
@@ -155,6 +156,11 @@ struct Row
 struct Solution
 {
     var sphereColors: [Color] = [Color.white, Color.white, Color.white, Color.white]
+    
+    init()
+    {
+        
+    }
     
     init(_ solution: Solution)
     {
