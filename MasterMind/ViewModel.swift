@@ -26,7 +26,8 @@ class ViewModel: ObservableObject
         self.rows = [Row]()
         self.userSolution = Solution()
         
-        self.CreateSolution()
+        //self.CreateSolution()
+        self.solution.sphereColors = [.blue, .blue, .green, .red]
     }
     
     private func CreateSolution()
@@ -39,22 +40,27 @@ class ViewModel: ObservableObject
     
     public func SendSolution()
     {
-        if(self.userSolution.sphereColors[0] == Color.white || self.userSolution.sphereColors[1] == Color.white ||
-            self.userSolution.sphereColors[2] == Color.white || self.userSolution.sphereColors[3] == Color.white)
+        for sphereIndex in 0...(userSolution.sphereColors.count - 1)
         {
-            return
+            if(userSolution.sphereColors[sphereIndex] == Color.white)
+            {
+                return
+            }
         }
 
         self.rows.append(Row(thisNumber: self.currentRow, solution: self.userSolution))
 							 
-        self.CheckSolution()
+        if(self.CheckSolution())
+        {
+            print("You won!!!")
+        }
 		
         self.currentRow += 1
         
         self.ResetUserSolution()
     }
     
-	private func CheckSolution()
+	private func CheckSolution() -> Bool
 	{
 		var correctPositions: [Int] = [Int]()
 		var incorrectPositions: [Int] = [Int]()
@@ -73,24 +79,23 @@ class ViewModel: ObservableObject
         
 		if(correctPositions.count == 4)
 		{
-			print("You won")
             self.rows[currentRow].answerColors = Solution(correctSolutions: correctPositions.count, incorrectSolutions: 0)
-			return
+			return true
 		}
         
         var diferentPositions: Int = 0
         
-        print(incorrectPositions.count)
-        
         for position in 0...(incorrectPositions.count - 1)
         {
-            if(CheckForDifferentPosition(position: position, incorrectPositions: incorrectPositions))
+            if(CheckForDifferentPosition(position: incorrectPositions[position], incorrectPositions: incorrectPositions))
             {
                 diferentPositions += 1
             }
         }
         
         self.rows[currentRow].answerColors = Solution(correctSolutions: correctPositions.count, incorrectSolutions: diferentPositions)
+        
+        return false
 	}
 	
 	private func CheckForSamePosition(position: Int) -> Bool
@@ -104,7 +109,7 @@ class ViewModel: ObservableObject
         
         for pos in 0...(incorrectPositions.count - 1)
         {
-            if(pos != position && self.rows[self.currentRow].solution.sphereColors[position] == self.solution.sphereColors[pos])
+            if(incorrectPositions[pos] != position && self.rows[self.currentRow].solution.sphereColors[incorrectPositions[pos]] == self.solution.sphereColors[position])
             {
                 foundOnDiferentPosition = true
                 break
