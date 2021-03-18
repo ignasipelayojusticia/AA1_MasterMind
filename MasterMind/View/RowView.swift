@@ -11,10 +11,10 @@ struct RowView: View
 {
     let viewModel: ViewModel
     
-    var rowNumber: Int
+    let rowNumber: Int
     
-    private let size: CGFloat = 35.0
-    private let answerSize: CGFloat = 15.0
+    private let size: CGFloat = 25.0
+    private let answerSize: CGFloat = 10.0
  
     
     var body: some View
@@ -25,10 +25,10 @@ struct RowView: View
             
             HStack
             {
-                Circle().fill(viewModel.rows[rowNumber].firstSphereColor).frame(width: size, height: size, alignment: .center)
-                Circle().fill(viewModel.rows[rowNumber].secondSphereColor).frame(width: size, height: size, alignment: .center)
-                Circle().fill(viewModel.rows[rowNumber].thirdSphereColor).frame(width: size, height: size, alignment: .center)
-                Circle().fill(viewModel.rows[rowNumber].fourthSphereColor).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].solution.sphereColors[0]).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].solution.sphereColors[1]).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].solution.sphereColors[2]).frame(width: size, height: size, alignment: .center)
+                Circle().fill(viewModel.rows[rowNumber].solution.sphereColors[3]).frame(width: size, height: size, alignment: .center)
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
 
             
@@ -36,17 +36,17 @@ struct RowView: View
             {
                 VStack
                 {
-                    Circle().fill(viewModel.rows[rowNumber].firstAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
-                    Circle().fill(viewModel.rows[rowNumber].thirdAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
+                    Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[0]).frame(width: answerSize, height: answerSize, alignment: .center)
+                    Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[2]).frame(width: answerSize, height: answerSize, alignment: .center)
                 }
                 VStack
                 {
-                    Circle().fill(viewModel.rows[rowNumber].secondAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
-                    Circle().fill(viewModel.rows[rowNumber].fourthAnswerColor).frame(width: answerSize, height: answerSize, alignment: .center)
+                    Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[1]).frame(width: answerSize, height: answerSize, alignment: .center)
+                    Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[3]).frame(width: answerSize, height: answerSize, alignment: .center)
                 }
             }
         }.frame(minWidth: 100, idealWidth: 300, maxWidth: .infinity,
-                minHeight: 25, idealHeight: 40, maxHeight: 50,
+                minHeight: 15, idealHeight: 25, maxHeight: 30,
                 alignment: .center)
     }
 }

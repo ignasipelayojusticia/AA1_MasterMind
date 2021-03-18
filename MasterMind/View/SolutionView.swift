@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SolutionView: View
 {
-	let viewModel: ViewModel
+    let solution: Solution
     
     private let size: CGFloat = 10.0
     
@@ -17,10 +17,10 @@ struct SolutionView: View
     {
         HStack
         {
-            Circle().fill(viewModel.solution.firstSphereColor).frame(width: size, height: size, alignment: .center)
-            Circle().fill(viewModel.solution.secondSphereColor).frame(width: size, height: size, alignment: .center)
-            Circle().fill(viewModel.solution.thirdSphereColor).frame(width: size, height: size, alignment: .center)
-            Circle().fill(viewModel.solution.fourthSphereColor).frame(width: size, height: size, alignment: .center)
+            Circle().fill(solution.sphereColors[0]).frame(width: size, height: size, alignment: .center)
+            Circle().fill(solution.sphereColors[1]).frame(width: size, height: size, alignment: .center)
+            Circle().fill(solution.sphereColors[2]).frame(width: size, height: size, alignment: .center)
+            Circle().fill(solution.sphereColors[3]).frame(width: size, height: size, alignment: .center)
         }
     }
 }
@@ -29,6 +29,6 @@ struct SolutionView_Previews: PreviewProvider
 {
     static var previews: some View
     {
-        SolutionView(viewModel: ViewModel())
+        SolutionView(solution: ViewModel().solution)
     }
 }

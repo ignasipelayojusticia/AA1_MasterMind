@@ -16,28 +16,36 @@ class ViewModel: ObservableObject
     
     @Published var solution: Solution
     @Published var rows: [Row]
-    @Published var userSolution: UserSolution
+    @Published var userSolution: Solution
     
     let validColors: [Color] = [.red, .blue, .yellow, .green]
     
     init()
     {
-        self.solution = Solution(self.validColors)
+        self.solution = Solution()
         self.rows = [Row]()
-        self.userSolution = UserSolution()
+        self.userSolution = Solution()
+        
+        self.CreateSolution()
+    }
+    
+    private func CreateSolution()
+    {
+        self.solution.sphereColors[0] = self.validColors[Int.random(in: (0...self.validColors.count - 1))]
+        self.solution.sphereColors[1] = self.validColors[Int.random(in: (0...self.validColors.count - 1))]
+        self.solution.sphereColors[2] = self.validColors[Int.random(in: (0...self.validColors.count - 1))]
+        self.solution.sphereColors[3] = self.validColors[Int.random(in: (0...self.validColors.count - 1))]
     }
     
     public func SendSolution()
     {
-        if(self.userSolution.firstSphereColor == Color.white || self.userSolution.secondSphereColor == Color.white ||
-            self.userSolution.thirdSphereColor == Color.white || self.userSolution.fourthSphereColor == Color.white)
+        if(self.userSolution.sphereColors[0] == Color.white || self.userSolution.sphereColors[1] == Color.white ||
+            self.userSolution.sphereColors[2] == Color.white || self.userSolution.sphereColors[3] == Color.white)
         {
             return
         }
 
-        self.rows.append(Row(thisNumber: self.currentRow,
-                             firstColor: self.userSolution.firstSphereColor, secondColor: self.userSolution.secondSphereColor,
-                             thirdColor: self.userSolution.thirdSphereColor, fourthColor: self.userSolution.fourthSphereColor))
+        self.rows.append(Row(thisNumber: self.currentRow, solution: self.userSolution))
 							 
 		//TODO: Check for correct positions
 		CheckSolution()
@@ -54,13 +62,13 @@ class ViewModel: ObservableObject
 	
 		for position in 1...4
 		{
-			if(CheckForSamePosition(position: number)
+			if(CheckForSamePosition(position: position))
 			{
-				correctPositions.append(number)
+				correctPositions.append(position)
 			}
 			else
 			{
-				incorrectPositions.append(number)
+				incorrectPositions.append(position)
 			}
 		}
 		
@@ -73,6 +81,8 @@ class ViewModel: ObservableObject
 	
 	private func CheckForSamePosition(position: Int) -> Bool
 	{
+        return false
+        /*
 		if(position == 1)
 		{
 			return self.rows[self.currentRow].firstSphereColor == self.userSolution.firstSphereColor
@@ -89,36 +99,37 @@ class ViewModel: ObservableObject
 		{
 			return self.rows[self.currentRow].fourthSphereColor == self.userSolution.fourthSphereColor
 		}
+        */
 	}
 	
     public func ResetUserSolution()
     {
-        self.userSolution.firstSphereColor = Color.white
-        self.userSolution.secondSphereColor = Color.white
-        self.userSolution.thirdSphereColor = Color.white
-        self.userSolution.fourthSphereColor = Color.white
+        self.userSolution.sphereColors[0] = Color.white
+        self.userSolution.sphereColors[1] = Color.white
+        self.userSolution.sphereColors[2] = Color.white
+        self.userSolution.sphereColors[3] = Color.white
     }
     
     public func AddColor(color: Color)
     {
-        if(self.userSolution.firstSphereColor == Color.white)
+        if(self.userSolution.sphereColors[0] == Color.white)
         {
-            self.userSolution.firstSphereColor = color
+            self.userSolution.sphereColors[0] = color
             return
         }
-        if(self.userSolution.secondSphereColor == Color.white)
+        if(self.userSolution.sphereColors[1] == Color.white)
         {
-            self.userSolution.secondSphereColor = color
+            self.userSolution.sphereColors[1] = color
             return
         }
-        if(self.userSolution.thirdSphereColor == Color.white)
+        if(self.userSolution.sphereColors[2] == Color.white)
         {
-            self.userSolution.thirdSphereColor = color
+            self.userSolution.sphereColors[2] = color
             return
         }
-        if(self.userSolution.fourthSphereColor == Color.white)
+        if(self.userSolution.sphereColors[3] == Color.white)
         {
-            self.userSolution.fourthSphereColor = color
+            self.userSolution.sphereColors[3] = color
             return
         }
     }
@@ -128,62 +139,30 @@ struct Row
 {
     let number: Int
     
-    var firstSphereColor: Color
-    var secondSphereColor: Color
-    var thirdSphereColor: Color
-    var fourthSphereColor: Color
+    var solution: Solution
+    var answerColors: Solution
     
-    var firstAnswerColor: Color
-    var secondAnswerColor: Color
-    var thirdAnswerColor: Color
-    var fourthAnswerColor: Color
-    
-    init(thisNumber: Int, firstColor: Color, secondColor: Color, thirdColor: Color, fourthColor: Color)
+    init(thisNumber: Int, solution: Solution)
     {
         self.number = thisNumber
         
-        self.firstSphereColor = firstColor
-        self.secondSphereColor = secondColor
-        self.thirdSphereColor = thirdColor
-        self.fourthSphereColor = fourthColor
+        self.solution = Solution(solution)
         
-        self.firstAnswerColor = Color.gray
-        self.secondAnswerColor = Color.gray
-        self.thirdAnswerColor = Color.gray
-        self.fourthAnswerColor = Color.gray
+        self.answerColors = Solution(Color.gray)
     }
 }
 
 struct Solution
 {
-    var firstSphereColor: Color = Color.gray
-    var secondSphereColor: Color = Color.gray
-    var thirdSphereColor: Color = Color.gray
-    var fourthSphereColor: Color = Color.gray
+    var sphereColors: [Color] = [Color.white, Color.white, Color.white, Color.white]
     
-    var visible: Bool = true
-    
-    init(_ validColors: [Color])
+    init(_ solution: Solution)
     {
-        self.firstSphereColor = validColors[Int.random(in: (0...3))]
-        self.secondSphereColor = validColors[Int.random(in: (0...3))]
-        self.thirdSphereColor = validColors[Int.random(in: (0...3))]
-        self.fourthSphereColor = validColors[Int.random(in: (0...3))]
+        self.sphereColors = solution.sphereColors
     }
-}
-
-struct UserSolution
-{
-    var firstSphereColor: Color
-    var secondSphereColor: Color
-    var thirdSphereColor: Color
-    var fourthSphereColor: Color
     
-    init()
+    init(_ defaultColor: Color)
     {
-        self.firstSphereColor = Color.white
-        self.secondSphereColor = Color.white
-        self.thirdSphereColor = Color.white
-        self.fourthSphereColor = Color.white
+        self.sphereColors = [defaultColor, defaultColor, defaultColor, defaultColor]
     }
 }

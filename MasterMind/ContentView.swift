@@ -32,14 +32,13 @@ struct ContentView: View
             
             Spacer()
             
-            SolutionView(viewModel: viewModel)
-            
+            SolutionView(solution: viewModel.solution)
             
             HStack
             {
                 ActionButtonView(label: "X", action: self.viewModel.ResetUserSolution, color: Color.red)
                 
-                UserSolutionView(viewModel: viewModel)
+                UserSolutionView(userSolution: viewModel.userSolution)
                 
                 ActionButtonView(label: ">", action: self.viewModel.SendSolution, color: Color.green)
             }
