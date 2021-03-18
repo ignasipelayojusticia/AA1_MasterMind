@@ -26,8 +26,7 @@ class ViewModel: ObservableObject
         self.rows = [Row]()
         self.userSolution = Solution()
         
-        //self.CreateSolution()
-        self.solution.sphereColors = [.blue, .blue, .green, .red]
+        self.CreateSolution()
     }
     
     private func CreateSolution()
@@ -84,14 +83,17 @@ class ViewModel: ObservableObject
 		}
         
         var diferentPositions: Int = 0
+        var activeSpheres: [Bool] = [Bool](repeating: false, count: incorrectPositions.count)
+        
         
         for position in 0...(incorrectPositions.count - 1)
         {
-            if(CheckForDifferentPosition(position: incorrectPositions[position], incorrectPositions: incorrectPositions))
+            if(CheckForDifferentPosition(position: incorrectPositions[position], incorrectPositions: incorrectPositions, activeSpheres: &activeSpheres))
             {
                 diferentPositions += 1
             }
         }
+
         
         self.rows[currentRow].answerColors = Solution(correctSolutions: correctPositions.count, incorrectSolutions: diferentPositions)
         
@@ -103,15 +105,17 @@ class ViewModel: ObservableObject
         return self.rows[self.currentRow].solution.sphereColors[position] == self.solution.sphereColors[position]
 	}
     
-    private func CheckForDifferentPosition(position: Int, incorrectPositions: [Int]) -> Bool
+    private func CheckForDifferentPosition(position: Int, incorrectPositions: [Int], activeSpheres: inout [Bool]) -> Bool
     {
         var foundOnDiferentPosition: Bool = false
         
         for pos in 0...(incorrectPositions.count - 1)
         {
-            if(incorrectPositions[pos] != position && self.rows[self.currentRow].solution.sphereColors[incorrectPositions[pos]] == self.solution.sphereColors[position])
+            if(incorrectPositions[pos] != position && !activeSpheres[pos] &&
+                self.rows[self.currentRow].solution.sphereColors[incorrectPositions[pos]] == self.solution.sphereColors[position])
             {
                 foundOnDiferentPosition = true
+                activeSpheres[pos] = true
                 break
             }
         }
@@ -129,6 +133,11 @@ class ViewModel: ObservableObject
     
     public func AddColor(color: Color)
     {
+        if(self.currentRow >= self.maximumNumberOfTries)
+        {
+            return
+        }
+        
         if(self.userSolution.sphereColors[0] == Color.white)
         {
             self.userSolution.sphereColors[0] = color
