@@ -11,6 +11,7 @@
 		EF15B63926012E9100579805 /* UserSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15B63826012E9100579805 /* UserSolutionView.swift */; };
 		EF15B63F26013BDA00579805 /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15B63E26013BDA00579805 /* ActionButtonView.swift */; };
 		EF15B64326013CC500579805 /* ColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15B64226013CC500579805 /* ColorButtonView.swift */; };
+		EF15B64C26042D0E00579805 /* VictoryMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15B64B26042D0E00579805 /* VictoryMessageView.swift */; };
 		EF1AEBF125F7F54C0016716E /* MasterMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AEBF025F7F54C0016716E /* MasterMindApp.swift */; };
 		EF1AEBF325F7F54C0016716E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AEBF225F7F54C0016716E /* ContentView.swift */; };
 		EF1AEBF525F7F54D0016716E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1AEBF425F7F54D0016716E /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		EF15B63826012E9100579805 /* UserSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSolutionView.swift; sourceTree = "<group>"; };
 		EF15B63E26013BDA00579805 /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
 		EF15B64226013CC500579805 /* ColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButtonView.swift; sourceTree = "<group>"; };
+		EF15B64B26042D0E00579805 /* VictoryMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryMessageView.swift; sourceTree = "<group>"; };
 		EF1AEBED25F7F54C0016716E /* MasterMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1AEBF025F7F54C0016716E /* MasterMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMindApp.swift; sourceTree = "<group>"; };
 		EF1AEBF225F7F54C0016716E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				EF15B63826012E9100579805 /* UserSolutionView.swift */,
 				EF15B63E26013BDA00579805 /* ActionButtonView.swift */,
 				EF15B64226013CC500579805 /* ColorButtonView.swift */,
+				EF15B64B26042D0E00579805 /* VictoryMessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				EF15B6322601224700579805 /* SolutionView.swift in Sources */,
 				EF1AEC0125F7F55D0016716E /* ViewModel.swift in Sources */,
 				EF15B63F26013BDA00579805 /* ActionButtonView.swift in Sources */,
+				EF15B64C26042D0E00579805 /* VictoryMessageView.swift in Sources */,
 				EF15B64326013CC500579805 /* ColorButtonView.swift in Sources */,
 				EF1AEBF125F7F54C0016716E /* MasterMindApp.swift in Sources */,
 			);

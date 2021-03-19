@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum GameStatus : String
+{
+    case playing = "Playing"
+    case victory = "Victory"
+    case defeat = "Defeat"
+}
 
 class ViewModel: ObservableObject
 {
@@ -17,6 +23,7 @@ class ViewModel: ObservableObject
     @Published var solution: Solution
     @Published var rows: [Row]
     @Published var userSolution: Solution
+    @Published var gameStatus: GameStatus
     
     let validColors: [Color] = [.red, .blue, .yellow, .green]
     
@@ -25,6 +32,7 @@ class ViewModel: ObservableObject
         self.solution = Solution()
         self.rows = [Row]()
         self.userSolution = Solution()
+        self.gameStatus = GameStatus.playing
         
         self.CreateSolution()
     }
@@ -51,12 +59,18 @@ class ViewModel: ObservableObject
 							 
         if(self.CheckSolution())
         {
-            print("You won!!!")
+            print("Victory!!!")
+            self.gameStatus = GameStatus.victory
         }
 		
         self.currentRow += 1
         
         self.ResetUserSolution()
+        
+        if(self.currentRow > self.maximumNumberOfTries && self.gameStatus != GameStatus.victory)
+        {
+            self.gameStatus = GameStatus.defeat
+        }
     }
     
 	private func CheckSolution() -> Bool

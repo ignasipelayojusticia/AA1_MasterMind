@@ -15,47 +15,55 @@ struct ContentView: View
     
     var body: some View
     {
-        VStack
+        ZStack
         {
-            Text("AA1 Mastermind").font(.title).bold()
-            Text("by Ignasi Pelayo").font(.footnote).italic()
-            
+            VStack
+            {
+                Text("AA1 Mastermind").font(.title).bold()
+                Text("by Ignasi Pelayo").font(.footnote).italic()
+                
+                
+                VStack
+                {
+                    ForEach(viewModel.rows, id: \.number)
+                    {
+                        row in
+                        RowView(viewModel: viewModel, rowNumber: row.number)
+                    }
+                }
+                
+                Spacer()
+                
+                SolutionView(solution: viewModel.solution)
+                
+                HStack
+                {
+                    ActionButtonView(icon: "trash", action: self.viewModel.ResetUserSolution, color: Color.red)
+                    
+                    UserSolutionView(userSolution: viewModel.userSolution)
+                    
+                    ActionButtonView(icon: "play", action: self.viewModel.SendSolution, color: Color.green)
+                }
+
+
+                HStack
+                {
+                    Spacer()
+                    ColorButtonView(viewModel: viewModel, color: self.viewModel.validColors[0])
+                    Spacer()
+                    ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[1])
+                    Spacer()
+                    ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[2])
+                    Spacer()
+                    ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[3])
+                    Spacer()
+                }.padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+            }
             
             VStack
             {
-                ForEach(viewModel.rows, id: \.number)
-                {
-                    row in
-                    RowView(viewModel: viewModel, rowNumber: row.number)
-                }
+                VictoryMessageView(viewModel: viewModel)
             }
-            
-            Spacer()
-            
-            SolutionView(solution: viewModel.solution)
-            
-            HStack
-            {
-                ActionButtonView(icon: "trash", action: self.viewModel.ResetUserSolution, color: Color.red)
-                
-                UserSolutionView(userSolution: viewModel.userSolution)
-                
-                ActionButtonView(icon: "play", action: self.viewModel.SendSolution, color: Color.green)
-            }
-
-
-            HStack
-            {
-                Spacer()
-                ColorButtonView(viewModel: viewModel, color: self.viewModel.validColors[0])
-                Spacer()
-                ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[1])
-                Spacer()
-                ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[2])
-                Spacer()
-                ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[3])
-                Spacer()
-            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
         }
     }
 }
