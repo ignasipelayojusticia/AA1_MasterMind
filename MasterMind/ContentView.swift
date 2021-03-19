@@ -36,11 +36,11 @@ struct ContentView: View
             
             HStack
             {
-                ActionButtonView(label: "X", action: self.viewModel.ResetUserSolution, color: Color.red)
+                ActionButtonView(icon: "trash", action: self.viewModel.ResetUserSolution, color: Color.red)
                 
                 UserSolutionView(userSolution: viewModel.userSolution)
                 
-                ActionButtonView(label: ">", action: self.viewModel.SendSolution, color: Color.green)
+                ActionButtonView(icon: "play", action: self.viewModel.SendSolution, color: Color.green)
             }
 
 
@@ -55,7 +55,7 @@ struct ContentView: View
                 Spacer()
                 ColorButtonView(viewModel: self.viewModel, color: self.viewModel.validColors[3])
                 Spacer()
-            }
+            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
         }
     }
 }

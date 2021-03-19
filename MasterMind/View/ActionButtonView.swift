@@ -9,20 +9,19 @@ import SwiftUI
 
 struct ActionButtonView: View
 {
-    let label: String
+    let icon: String
     let action: () -> Void
     let color: Color
     
-    private let size: CGFloat = 50.0
+    private let size: CGFloat = 35
+    private let paddingSize: CGFloat = 10
     
     var body: some View
     {
-        Button(label, action: { action() })
-            .frame(width: size, height: size, alignment: .center)
-            .background(color)
-            .foregroundColor(.black)
-            .font(.largeTitle)
-            .cornerRadius(30)
+        Button(action: { action() })
+        {
+            Image(systemName: icon).foregroundColor(color).padding().overlay(RoundedRectangle(cornerRadius: 25).stroke(color, lineWidth: 2).frame(width: size, height: size, alignment: .center)).padding(EdgeInsets(top: 0, leading: paddingSize, bottom: 0, trailing: paddingSize))
+        }
     }
 }
 
@@ -30,6 +29,6 @@ struct ActionButtonView_Previews: PreviewProvider
 {
     static var previews: some View
     {
-        ActionButtonView(label: "X", action: { print("·")}, color: Color.red)
+        ActionButtonView(icon: "thrash", action: { print("·")}, color: Color.red)
     }
 }

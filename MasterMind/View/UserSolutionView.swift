@@ -17,10 +17,18 @@ struct UserSolutionView: View
     {
         HStack
         {
-            Circle().fill(userSolution.sphereColors[0]).frame(width: size, height: size, alignment: .center)
-            Circle().fill(userSolution.sphereColors[1]).frame(width: size, height: size, alignment: .center)
-            Circle().fill(userSolution.sphereColors[2]).frame(width: size, height: size, alignment: .center)
-            Circle().fill(userSolution.sphereColors[3]).frame(width: size, height: size, alignment: .center)
+            Circle()
+                .strokeBorder(Color.gray, lineWidth: 1)
+                .background(Circle().fill(userSolution.sphereColors[0])).frame(width: size, height: size, alignment: .center)
+            Circle()
+                .strokeBorder(Color.gray, lineWidth: 1)
+                .background(Circle().fill(userSolution.sphereColors[1])).frame(width: size, height: size, alignment: .center)
+            Circle()
+                .strokeBorder(Color.gray, lineWidth: 1)
+                .background(Circle().fill(userSolution.sphereColors[2])).frame(width: size, height: size, alignment: .center)
+            Circle()
+                .strokeBorder(Color.gray, lineWidth: 1)
+                .background(Circle().fill(userSolution.sphereColors[3])).frame(width: size, height: size, alignment: .center)
         }
     }
 }
