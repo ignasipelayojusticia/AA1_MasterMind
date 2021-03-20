@@ -18,23 +18,34 @@ class ViewModel: ObservableObject
 {
     let maximumNumberOfTries: Int = 12
     
-    @Published var currentRow: Int = 0
+    @Published var gameStatus: GameStatus
     
+    @Published var currentRow: Int = 0
     @Published var solution: Solution
     @Published var rows: [Row]
     @Published var userSolution: Solution
-    @Published var gameStatus: GameStatus
     
     let validColors: [Color] = [.red, .blue, .yellow, .green]
     
     init()
     {
+        self.gameStatus = GameStatus.playing
+        
         self.solution = Solution()
         self.rows = [Row]()
         self.userSolution = Solution()
-        self.gameStatus = GameStatus.playing
         
         self.CreateSolution()
+    }
+    
+    private func SwitchGameStatus(newGameStatus: GameStatus)
+    {
+        self.gameStatus = newGameStatus
+    }
+    
+    public func SwitchToPlaying()
+    {
+        SwitchGameStatus(newGameStatus: GameStatus.playing)
     }
     
     private func CreateSolution()
@@ -59,15 +70,15 @@ class ViewModel: ObservableObject
 							 
         if(self.CheckSolution())
         {
-            print("Victory!!!")
             self.gameStatus = GameStatus.victory
+            print(gameStatus.rawValue)
         }
 		
         self.currentRow += 1
         
         self.ResetUserSolution()
         
-        if(self.currentRow > self.maximumNumberOfTries && self.gameStatus != GameStatus.victory)
+        if(self.currentRow >= self.maximumNumberOfTries && self.gameStatus != GameStatus.victory)
         {
             self.gameStatus = GameStatus.defeat
         }
@@ -108,7 +119,6 @@ class ViewModel: ObservableObject
             }
         }
 
-        
         self.rows[currentRow].answerColors = Solution(correctSolutions: correctPositions.count, incorrectSolutions: diferentPositions)
         
         return false
@@ -173,6 +183,16 @@ class ViewModel: ObservableObject
             return
         }
     }
+    
+    public func PlayAgain()
+    {
+        self.gameStatus = GameStatus.playing
+       
+        self.rows = [Row]()
+        self.userSolution = Solution()
+        self.CreateSolution()
+        self.currentRow = 0
+    }
 }
 
 struct Row
@@ -228,5 +248,10 @@ struct Solution
                 self.sphereColors[correctSolutions + number] = Color.yellow
             }
         }
+    }
+    
+    init(_ colors: [Color])
+    {
+        self.sphereColors = [colors[0], colors[1], colors[2], colors[3]]
     }
 }

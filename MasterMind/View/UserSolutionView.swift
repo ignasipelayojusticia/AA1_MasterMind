@@ -19,16 +19,16 @@ struct UserSolutionView: View
         {
             Circle()
                 .strokeBorder(Color.gray, lineWidth: 1)
-                .background(Circle().fill(userSolution.sphereColors[0])).frame(width: size, height: size, alignment: .center)
+                .background(Circle().fill(userSolution.sphereColors[0]).opacity(userSolution.sphereColors[0] == Color.white ? 0 : 1)).frame(width: size, height: size, alignment: .center)
             Circle()
                 .strokeBorder(Color.gray, lineWidth: 1)
-                .background(Circle().fill(userSolution.sphereColors[1])).frame(width: size, height: size, alignment: .center)
+                .background(Circle().fill(userSolution.sphereColors[1]).opacity(userSolution.sphereColors[1] == Color.white ? 0 : 1)).frame(width: size, height: size, alignment: .center)
             Circle()
                 .strokeBorder(Color.gray, lineWidth: 1)
-                .background(Circle().fill(userSolution.sphereColors[2])).frame(width: size, height: size, alignment: .center)
+                .background(Circle().fill(userSolution.sphereColors[2]).opacity(userSolution.sphereColors[2] == Color.white ? 0 : 1)).frame(width: size, height: size, alignment: .center)
             Circle()
                 .strokeBorder(Color.gray, lineWidth: 1)
-                .background(Circle().fill(userSolution.sphereColors[3])).frame(width: size, height: size, alignment: .center)
+                .background(Circle().fill(userSolution.sphereColors[3]).opacity(userSolution.sphereColors[3] == Color.white ? 0 : 1)).frame(width: size, height: size, alignment: .center)
         }
     }
 }

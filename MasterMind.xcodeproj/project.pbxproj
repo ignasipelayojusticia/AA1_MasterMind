@@ -17,6 +17,8 @@
 		EF1AEBF525F7F54D0016716E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1AEBF425F7F54D0016716E /* Assets.xcassets */; };
 		EF1AEBF825F7F54D0016716E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1AEBF725F7F54D0016716E /* Preview Assets.xcassets */; };
 		EF1AEC0125F7F55D0016716E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1AEC0025F7F55D0016716E /* ViewModel.swift */; };
+		EF74EE8226063C3600B6498D /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74EE8126063C3600B6498D /* PlayButtonView.swift */; };
+		EF74EE8626064AFE00B6498D /* DefeatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74EE8526064AFE00B6498D /* DefeatMessageView.swift */; };
 		EFD9061625FA907500708365 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9061525FA907500708365 /* RowView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		EF1AEBF725F7F54D0016716E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EF1AEBF925F7F54D0016716E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF1AEC0025F7F55D0016716E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EF74EE8126063C3600B6498D /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
+		EF74EE8526064AFE00B6498D /* DefeatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefeatMessageView.swift; sourceTree = "<group>"; };
 		EFD9061525FA907500708365 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,8 @@
 				EF15B63E26013BDA00579805 /* ActionButtonView.swift */,
 				EF15B64226013CC500579805 /* ColorButtonView.swift */,
 				EF15B64B26042D0E00579805 /* VictoryMessageView.swift */,
+				EF74EE8126063C3600B6498D /* PlayButtonView.swift */,
+				EF74EE8526064AFE00B6498D /* DefeatMessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,7 +183,9 @@
 			files = (
 				EF15B63926012E9100579805 /* UserSolutionView.swift in Sources */,
 				EF1AEBF325F7F54C0016716E /* ContentView.swift in Sources */,
+				EF74EE8226063C3600B6498D /* PlayButtonView.swift in Sources */,
 				EFD9061625FA907500708365 /* RowView.swift in Sources */,
+				EF74EE8626064AFE00B6498D /* DefeatMessageView.swift in Sources */,
 				EF15B6322601224700579805 /* SolutionView.swift in Sources */,
 				EF1AEC0125F7F55D0016716E /* ViewModel.swift in Sources */,
 				EF15B63F26013BDA00579805 /* ActionButtonView.swift in Sources */,

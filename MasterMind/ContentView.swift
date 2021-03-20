@@ -33,16 +33,15 @@ struct ContentView: View
                 }
                 
                 Spacer()
-                
-                SolutionView(solution: viewModel.solution)
+
                 
                 HStack
                 {
-                    ActionButtonView(icon: "trash", action: self.viewModel.ResetUserSolution, color: Color.red)
+                    ActionButtonView(icon: "trash.fill", action: self.viewModel.ResetUserSolution, color: Color.red)
                     
                     UserSolutionView(userSolution: viewModel.userSolution)
                     
-                    ActionButtonView(icon: "play", action: self.viewModel.SendSolution, color: Color.green)
+                    ActionButtonView(icon: "play.fill", action: self.viewModel.SendSolution, color: Color.green)
                 }
 
 
@@ -62,7 +61,14 @@ struct ContentView: View
             
             VStack
             {
-                VictoryMessageView(viewModel: viewModel)
+                if(self.viewModel.gameStatus == GameStatus.victory)
+                {
+                    VictoryMessageView(numberOfTries: self.viewModel.currentRow, action: viewModel.PlayAgain)
+                }
+                else if(self.viewModel.gameStatus == GameStatus.defeat)
+                {
+                    DefeatMessageView(solution: self.viewModel.solution, action: self.viewModel.PlayAgain)
+                }
             }
         }
     }

@@ -1,24 +1,24 @@
 //
-//  VictoryMessageView.swift
+//  DefeatMessageView.swift
 //  MasterMind
 //
-//  Created by Alumne on 19/3/21.
+//  Created by Alumne on 20/3/21.
 //
 
 import SwiftUI
 
-struct VictoryMessageView: View
+struct DefeatMessageView: View
 {
-    var numberOfTries: Int
+    var solution: Solution
     var action: () -> Void
     
     var body: some View
     {
         VStack
         {
-            Text("You won!").font(.title).padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-            Text("Total number of tries:")
-            Text("\(numberOfTries)").font(.largeTitle)
+            Text("You lost!").font(.title).padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+            Text("Solution:")
+            UserSolutionView(userSolution: solution)
             
             Spacer()
             
@@ -29,10 +29,10 @@ struct VictoryMessageView: View
 }
 
 
-struct VictoryMessageView_Preview: PreviewProvider
+struct DefeatMessageView_Preview: PreviewProvider
 {
     static var previews: some View
     {
-        VictoryMessageView(numberOfTries: 10, action: {print("f")})
+        DefeatMessageView(solution: Solution(Color.red), action: {print("f")})
     }
 }
