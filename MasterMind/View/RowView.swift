@@ -47,24 +47,24 @@ struct RowView: View
                     Circle()
                         .strokeBorder(Color.gray, lineWidth: 1)
                         .background(Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[0])).frame(width: answerSize, height: answerSize, alignment: .center)
-                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[0] == Color.white) ? 0 : 1)
+                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[0] == Color.gray) ? 0 : 1)
                     
                     Circle()
                         .strokeBorder(Color.gray, lineWidth: 1)
                         .background(Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors   [2])).frame(width: answerSize, height: answerSize, alignment: .center)
-                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[2] == Color.white) ? 0 : 1)
+                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[2] == Color.gray) ? 0 : 1)
                 }
                 VStack
                 {
                     Circle()
                         .strokeBorder(Color.gray, lineWidth: 1)
                     .background(Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[1])).frame(width: answerSize, height: answerSize, alignment: .center)
-                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[1] == Color.white) ? 0 : 1)
+                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[1] == Color.gray) ? 0 : 1)
                     
                     Circle()
                         .strokeBorder(Color.gray, lineWidth: 1)
                     .background(Circle().fill(viewModel.rows[rowNumber].answerColors.sphereColors[3])).frame(width: answerSize, height: answerSize, alignment: .center)
-                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[3] == Color.white) ? 0 : 1)
+                        .opacity((viewModel.rows[rowNumber].answerColors.sphereColors[3] == Color.gray) ? 0 : 1)
                 }
             }
         }.frame(minWidth: 100, idealWidth: 300, maxWidth: .infinity,

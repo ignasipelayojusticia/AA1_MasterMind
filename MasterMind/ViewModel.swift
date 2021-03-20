@@ -71,7 +71,6 @@ class ViewModel: ObservableObject
         if(self.CheckSolution())
         {
             self.gameStatus = GameStatus.victory
-            print(gameStatus.rawValue)
         }
 		
         self.currentRow += 1
@@ -233,6 +232,8 @@ struct Solution
     
     init(correctSolutions: Int, incorrectSolutions: Int)
     {
+        self.sphereColors = [Color.gray, Color.gray, Color.gray, Color.gray]
+        
         if(correctSolutions > 0)
         {
             for number in 0...(correctSolutions - 1)
@@ -245,7 +246,7 @@ struct Solution
         {
             for number in 0...(incorrectSolutions - 1)
             {
-                self.sphereColors[correctSolutions + number] = Color.yellow
+                self.sphereColors[correctSolutions + number] = Color.white
             }
         }
     }
